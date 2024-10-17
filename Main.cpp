@@ -8,6 +8,7 @@
 #include <fstream>    
 #include <ctime>      
 #include <functional> 
+#include <map>        // For mapping customer IDs to names and VIP status
 
 using namespace std;
 
@@ -228,8 +229,14 @@ int main() {
     //Create a vector to store each customer/name
     vector<int> customers;
 
+    // Initialize a vector to track the line order
+    vector<int> line_order; 
+
     //Variable to represent line
     string fileLine;
+
+    // Variable to assign unique IDs to customers
+    int next_id = 1;
 
       //File check
     if (!inFile) {
@@ -238,40 +245,54 @@ int main() {
     }
      
 
-    //Create something here to read each line from file. For this, let's use a while loop
+    // Read each line from the file and add to the customers vector
     while (getline(inFile, fileLine)) {
-        if (!fileLine.empty()) { 
+        if (!fileLine.empty()) { // Ensure the line is not empty
             customers.push_back(fileLine);
         }
     }
     inFile.close(); // Close the file after reading
+
+    // Map to associate each customer ID with their name and VIP status
+    map<int, pair<string, bool>> id_to_name_vip;
    
 
     //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
     //We can add five customers using a simple for-loop
-   
 
+       // Add 5 customers to the line immediately as the store opens
+    for (int i = 0; i < 5 && i < customers.size(); ++i) {
+        string customer = customers[i]; // Get the customer name
+        bool isVip = (rand() % 100) < 10; // 10% chance to be a VIP
 
-    //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
+        // Assign a unique ID to the customer
+        int customer_id = next_id++;
+        id_to_name_vip[customer_id] = make_pair(customer, vip_status); // Map ID to name and VIP status
 
-  
+        if (isVip) {
+            list.push_front(customer_id); // VIPs join the front of the line
+            cout << "    " << customer << " (VIP) joins the front of the line" << endl;
+        }
+        else {
+            list.push_back(customer_id); // Regular customers join the end of the line
+            cout << "    " << customer << " joins the line" << endl;
+        }
+    }
 
-    //A customer being helped at the beginning of the line and ordering their coffee is 40 %
+    cout << "resulting line" << endl;
 
-    
-    //A new customer joining the end of the line is 60 %
-    
-    
-    //The customer at the end of the line deciding they don't want to wait and leaving is 20%
-    
-    
-    //Any particular customer can decide they don't want to wait and leave the line: 10%
-    
-    
-    //A VIP(very important person) customer with a Coffee House Gold Card gets to skip the line and go straight to the counter and order: 10 %
+    // Assuming the first 5 customers are already added abov, so Extracting customer IDs from the list is not possible without accessing private members
 
-    //Display final
+    for (int i = 0; i < 5 && i < customers.size(); ++i) {
 
+        string customer = customers[i];
+        bool vip_status = (rand() % 100) < 10;
+
+    }
+    line_order.clear();
+
+    list = DoublyLinkedList();
+    line_order.clear();
 
 
     return 0;
