@@ -51,7 +51,7 @@ public:
         else
             tail = newNode;
         temp->next = newNode;
-    }
+    } 
 
     void delete_val(int value) {
         if (!head) return;
