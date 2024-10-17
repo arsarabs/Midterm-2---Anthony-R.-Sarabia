@@ -230,7 +230,14 @@ int main() {
     //Variable to represent line
     string fileLine;
 
-    //Create something here to read each line from file
+    //Create something here to read each line from file. For this, let's use a while loop
+    while(getline(file, fileLine)) {
+        //and add each line to vector
+        if (!fileLine.empty()) {
+            int customer = stoi(fileLine);
+            customers.push_back(customer); // this line adds our
+        }
+    }
 
     //and add each line to vector
 
