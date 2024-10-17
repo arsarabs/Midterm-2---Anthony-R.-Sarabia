@@ -330,26 +330,47 @@ int main() {
 
     // Run the simulation for the defined number of time periods
 
+        // Run the simulation for the defined number of time periods
+    for (int time_step = 1; time_step <= simulation_periods; ++time_step) {
+        cout << "Time step #" << time_step << ":" << endl;
+
     // Event 1: 40% chance to serve a customer at the front
+    
 
-     // Event 2: 60% chance for a new customer to join the end
+    // Event 2: 60% chance for a new customer to join the end
 
-    // Event 3: 20% chance the last customer leaves the line
+   // Event 3: 20% chance the last customer leaves the line
 
-     // Event 4: 10% chance any customer decides to leave the line
+    // Event 4: 10% chance any customer decides to leave the line
+        int leave_any_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
+        if (leave_any_prob <= 10) { // 10% chance
+            if (!line_order.empty()) { // Ensure the line is not empty
+                // Select a random customer from the line
+                int random_index = rand() % line_order.size();
+                int leaving_id = line_order[random_index]; // Get the customer ID
+                string leaving_name = id_to_name_vip[leaving_id].first; // Get the customer's name
 
-    //Dispaly final
-    for (int id : line_order) {
-        string name = id_to_name_vip[id].first;
-        bool vip = id_to_name_vip[id].second;
-        if (vip)
-            cout << name << " (VIP)" << endl;
-        else
-            cout << name << endl;
+                // Remove the customer from the DoublyLinkedList and tracking vector
+                list.delete_val(leaving_id);
+                line_order.erase(line_order.begin() + random_index);
+
+                cout << "    " << leaving_name << " left the line" << endl;
+            }
+        }
+
+        cout << "resulting line" << endl;
+
+        //Dispaly final
+        for (int id : line_order) {
+            string name = id_to_name_vip[id].first;
+            bool vip = id_to_name_vip[id].second;
+            if (vip)
+                cout << name << " (VIP)" << endl;
+            else
+                cout << name << endl;
+        }
+        cout << endl;
     }
-    cout << endl;
-
-
-
+        
     return 0;
 }
