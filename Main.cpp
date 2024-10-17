@@ -231,7 +231,7 @@ int main() {
     string fileLine;
 
     //Create something here to read each line from file. For this, let's use a while loop
-    while(getline(file, fileLine)) {
+    while(getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
         //and add each line to vector
         if (!fileLine.empty()) {
             int customer = stoi(fileLine);
