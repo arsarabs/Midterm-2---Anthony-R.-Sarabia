@@ -230,9 +230,21 @@ int main() {
 
     //Variable to represent line
     string fileLine;
+
+      //File check
+    if (!inFile) {
+        cerr << "Error: Unable to open file '" << file << "'." << endl;
+        return 1; // Exit with error code if file reading fails
+    }
      
 
     //Create something here to read each line from file. For this, let's use a while loop
+    while (getline(inFile, fileLine)) {
+        if (!fileLine.empty()) { 
+            customers.push_back(fileLine);
+        }
+    }
+    inFile.close(); // Close the file after reading
    
 
     //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
