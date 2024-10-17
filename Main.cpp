@@ -266,12 +266,7 @@ int main() {
 
     //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
 
-    for (int time = 1; time <= simulation_periods; time++) {
-        int eventA = rand();
-        if (eventA < 40){
-            if
-    }
-}
+  
 
     //A customer being helped at the beginning of the line and ordering their coffee is 40 %
 
