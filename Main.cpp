@@ -12,6 +12,7 @@
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int simulation_periods = 20;
 
 class DoublyLinkedList {
 private:
@@ -221,7 +222,7 @@ int main() {
     DoublyLinkedList list;
 
     //Read actual file before you create something to read each line
-    string file = "customers.txt";
+    string file = "names.txt";
     ifstream inFile(file);
 
     //Create a vector to store each customer/name
@@ -229,6 +230,9 @@ int main() {
 
     //Variable to represent line
     string fileLine;
+
+    //Let's create some more variables to represent each probability
+
 
     //Create something here to read each line from file. For this, let's use a while loop
     while(getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
@@ -239,11 +243,28 @@ int main() {
         }
     }
 
-    //and add each line to vector
-
     //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
+    //We can add five customers using a simple for-loop
+    cout << "STORE OPENS!: " << endl;
 
-    //Dsipaly content
+    for (int i = 0; i < 5; i++) {
+        if (i < customers.size()) {
+            int customer = customers[i];
+            bool customerVip = rand() % 40 % < 4;
+            if (customerVip) {
+                list.push_back(customer);
+            }
+            else {
+                list.push_back(customer);
+            }
+        }
+    }
+
+    //Dsipaly content (after opening)
+    cout << "Resulting line" << endl;
+    cout << endl;
+    list.print();
+    cout << endl;
 
     //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
 
