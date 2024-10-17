@@ -1,4 +1,14 @@
+// COMSC-210 | Midterm #2 | Anthony R. Sarabia
+// IDE used: Visual Studio
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>   
+#include <string>    
+#include <vector>     
+#include <fstream>    
+#include <ctime>      
+#include <functional> 
+
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -192,7 +202,7 @@ public:
     void print_reverse() {
         Node* current = tail;
         if (!current) {
-            cout << "List is empty." << endl;
+            cout << "List is empty." << endl; 
             return;
         }
         while (current) {
@@ -204,7 +214,15 @@ public:
 };
 
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    //Seed the random generator
+
+    //Create something here to read each line from file
+
+    //and add each line to vector
+
+    //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
+
+
 
 
     return 0;
