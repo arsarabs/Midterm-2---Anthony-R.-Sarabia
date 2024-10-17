@@ -215,6 +215,20 @@ public:
 
 int main() {
     //Seed the random generator
+    srand(static_cast<unsigned int>(time(0)));
+
+    //Initilaize line
+    DoublyLinkedList list;
+
+    //Read actual file before you create something to read each line
+    string file = "customers.txt";
+    ifstream inFile(file);
+
+    //Create a vector to store each customer/name
+    vector<int> customers;
+
+    //Variable to represent line
+    string fileLine;
 
     //Create something here to read each line from file
 
@@ -222,6 +236,26 @@ int main() {
 
     //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
 
+    //Dsipaly content
+
+    //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
+
+
+    //A customer being helped at the beginning of the line and ordering their coffee is 40 %
+
+    
+    //A new customer joining the end of the line is 60 %
+    
+    
+    //The customer at the end of the line deciding they don't want to wait and leaving is 20%
+    
+    
+    //Any particular customer can decide they don't want to wait and leave the line: 10%
+    
+    
+    //A VIP(very important person) customer with a Coffee House Gold Card gets to skip the line and go straight to the counter and order: 10 %
+
+    //Display final
 
 
 
