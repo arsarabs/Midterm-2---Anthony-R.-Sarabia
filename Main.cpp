@@ -294,6 +294,62 @@ int main() {
     list = DoublyLinkedList();
     line_order.clear();
 
+    for(int i = 0; i < 5 && i < customers.size(); ++i) {
+        string customer = customers[i]; // Get the customer name
+        bool vip_status = (rand() % 100) < 10; // 10% chance to be a VIP
+
+        // Assign a unique ID to the customer
+        int customer_id = next_id++;
+        id_to_name_vip[customer_id] = make_pair(customer, vip_status); // Map ID to name and VIP status
+
+        if (vip_status) {
+            list.push_front(customer_id); // VIPs join the front of the line
+            line_order.insert(line_order.begin(), customer_id); // Add to the front of the tracking vector
+            cout << "    " << customer << " (VIP) joins the front of the line" << endl;
+        }
+        else {
+            list.push_back(customer_id); // Regular customers join the end of the line
+            line_order.push_back(customer_id); // Add to the end of the tracking vector
+            cout << "    " << customer << " joins the line" << endl;
+        }
+    }
+
+    cout << "resulting line" << endl;
+
+    //Now, Traverse the line_order vector and print customer names in order (we'll use this to display at the end_)
+    for (int id : line_order) {
+        string name = id_to_name_vip[id].first;
+        bool vip = id_to_name_vip[id].second;
+        if (vip)
+            cout << name << " (VIP)" << endl;
+        else
+            cout << name << endl;
+    }
+    cout << endl;
+
+
+    // Run the simulation for the defined number of time periods
+
+    // Event 1: 40% chance to serve a customer at the front
+
+     // Event 2: 60% chance for a new customer to join the end
+
+    // Event 3: 20% chance the last customer leaves the line
+
+     // Event 4: 10% chance any customer decides to leave the line
+
+    //Dispaly final
+    for (int id : line_order) {
+        string name = id_to_name_vip[id].first;
+        bool vip = id_to_name_vip[id].second;
+        if (vip)
+            cout << name << " (VIP)" << endl;
+        else
+            cout << name << endl;
+    }
+    cout << endl;
+
+
 
     return 0;
 }
