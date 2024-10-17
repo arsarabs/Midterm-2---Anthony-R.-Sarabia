@@ -348,6 +348,21 @@ int main() {
     
 
     // Event 2: 60% chance for a new customer to join the end
+        int join_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
+        if (join_prob <= 60) { // 60% chance
+            if (customers.empty()) { // Ensure there are names available
+                cout << "    No available names to add new customer." << endl;
+            }
+            else {
+                int name_index = rand() % customers.size(); // Random index
+                string new_customer = customers[name_index]; // Get the customer name
+
+                bool vip_status = (rand() % 100) < 10; // 10% chance to be a VIP
+
+                // Assign a unique ID to the new customer
+                int new_id = next_id++;
+                id_to_name_vip[new_id] = make_pair(new_customer, vip_status); // Map ID to name and VIP status
+
 
    // Event 3: 20% chance the last customer leaves the line
         int leave_end_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
