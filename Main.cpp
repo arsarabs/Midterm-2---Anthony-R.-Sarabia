@@ -335,11 +335,31 @@ int main() {
         cout << "Time step #" << time_step << ":" << endl;
 
     // Event 1: 40% chance to serve a customer at the front
+        int serve_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
+        if (serve_prob <= 40) { // 40% chance
+            if (!line_order.empty()) { // Ensure the line is not empty
+                int served_id = line_order.front(); // Get the first customer ID
+                string served_name = id_to_name_vip[served_id].first; // Get the customer's name
+                list.pop_front(); // Remove from the DoublyLinkedList
+                line_order.erase(line_order.begin()); // Remove from the tracking vector
+                cout << "    " << served_name << " is served" << endl;
+            }
+        }
     
 
     // Event 2: 60% chance for a new customer to join the end
 
    // Event 3: 20% chance the last customer leaves the line
+        int leave_end_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
+        if (leave_end_prob <= 20) { // 20% chance
+            if (!line_order.empty()) { // Ensure the line is not empty
+                int leaving_id = line_order.back(); // Get the last customer ID
+                string leaving_name = id_to_name_vip[leaving_id].first; // Get the customer's name
+                list.pop_back(); // Remove from the DoublyLinkedList
+                line_order.pop_back(); // Remove from the tracking vector
+                cout << "    " << leaving_name << " (at the rear) left the line" << endl;
+            }
+        }
 
     // Event 4: 10% chance any customer decides to leave the line
         int leave_any_prob = rand() % 100 + 1; // Generate a random number between 1 and 100
