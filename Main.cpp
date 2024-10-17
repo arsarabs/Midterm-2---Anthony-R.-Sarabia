@@ -362,6 +362,18 @@ int main() {
                 // Assign a unique ID to the new customer
                 int new_id = next_id++;
                 id_to_name_vip[new_id] = make_pair(new_customer, vip_status); // Map ID to name and VIP status
+                if (vip_status) {
+                    list.push_front(new_id); // VIPs join the front of the line
+                    line_order.insert(line_order.begin(), new_id); // Add to the front of the tracking vector
+                    cout << "    " << new_customer << " (VIP) joins the front of the line" << endl;
+                }
+                else {
+                    list.push_back(new_id); // Regular customers join the end of the line
+                    line_order.push_back(new_id); // Add to the end of the tracking vector
+                    cout << "    " << new_customer << " joins the line" << endl;
+                }
+            }
+        }
 
 
    // Event 3: 20% chance the last customer leaves the line
