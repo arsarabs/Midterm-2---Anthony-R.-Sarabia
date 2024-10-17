@@ -233,7 +233,7 @@ int main() {
 
 
     //Create something here to read each line from file. For this, let's use a while loop
-    while(getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
+    while (getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
         //and add each line to vector
         if (!fileLine.empty()) {
             int customer = stoi(fileLine);
@@ -267,8 +267,11 @@ int main() {
     //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
 
     for (int time = 1; time <= simulation_periods; time++) {
-
+        int eventA = rand();
+        if (eventA < 40){
+            if
     }
+}
 
     //A customer being helped at the beginning of the line and ordering their coffee is 40 %
 
