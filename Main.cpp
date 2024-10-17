@@ -231,8 +231,6 @@ int main() {
     //Variable to represent line
     string fileLine;
 
-    //Let's create some more variables to represent each probability
-
 
     //Create something here to read each line from file. For this, let's use a while loop
     while(getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
@@ -268,6 +266,9 @@ int main() {
 
     //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
 
+    for (int time = 1; time <= simulation_periods; time++) {
+
+    }
 
     //A customer being helped at the beginning of the line and ordering their coffee is 40 %
 
