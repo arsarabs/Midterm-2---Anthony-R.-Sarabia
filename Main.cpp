@@ -230,39 +230,15 @@ int main() {
 
     //Variable to represent line
     string fileLine;
-
+     
 
     //Create something here to read each line from file. For this, let's use a while loop
-    while (getline(inFile, fileLine)) { // error fixed: file->inFile. simple typo in my variable used..
-        //and add each line to vector
-        if (!fileLine.empty()) {
-            int customer = stoi(fileLine);
-            customers.push_back(customer); // this line adds our
-        }
-    }
+   
 
     //When the store opens (i.e. in first time period), add 5 customers to the line right away. (i got this from assignment instructions)
     //We can add five customers using a simple for-loop
-    cout << "STORE OPENS!: " << endl;
+   
 
-    for (int i = 0; i < 5; i++) {
-        if (i < customers.size()) {
-            int customer = customers[i];
-            bool customerVip = rand() % 40 % < 4;
-            if (customerVip) {
-                list.push_back(customer);
-            }
-            else {
-                list.push_back(customer);
-            }
-        }
-    }
-
-    //Dsipaly content (after opening)
-    cout << "Resulting line" << endl;
-    cout << endl;
-    list.print();
-    cout << endl;
 
     //run simulation (In subsequent time periods, the probability of...SEE BELOW!!!)
 
